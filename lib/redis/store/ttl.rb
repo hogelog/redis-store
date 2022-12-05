@@ -20,7 +20,7 @@ class Redis
       protected
         def setnx_with_expire(key, value, ttl, options = {})
           with_multi_or_pipelined(options) do |transaction|
-            transaction.setnx(key, value, :raw => true)
+            transaction.setnx(key, value)
             transaction.expire(key, ttl)
           end
         end
